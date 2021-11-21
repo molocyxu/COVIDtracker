@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+  <ul class="nav masthead-nav">
+    <li><a href="/">Home Page</a></li>
+    <li class="active"><a href="/update">Update Your Info</a></li>
+  </ul>
+{% endblock %}
+
+{% block body %}
+  <form action="/insert" method="post" >
+
+    <div class="form-inline" style="margin=auto">
+      <div class="input-group"style="width: 400px;align:center">
+        <div class="input-group-addon"style="width: 80px">Region</div>
+        <input class="form-control" name="region" placeholder="Please enter your region" >
+      </div>
+  </div>
+  <p></p>
+    <div class="form-inline" style="margin=auto">
+      <div class="input-group" style="width: 400px">
+        <div class="input-group-addon"  style="width: 80px">Result</div>
+        <input class="form-control" name="result" placeholder="Please enter your result">
+      </div>
+  </div>
+    <p></p>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+  <br/>
+
+  {% if fail_query == 1%}
+  	<div class="alert alert-danger alert-dismissible" role="alert">
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    	Fail to record the result.
+  	</div>
+
+  {% endif %}
+
+  {% if miss_query == 1%}
+  	<div class="alert alert-danger alert-dismissible" role="alert">
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    	Please fill up all the blanks.
+  	</div>
+
+  {% endif %}
+
+  {% if success_query == 1 %}
+  <div class="alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Your result has been successfully recorded.
+  </div>
+  {% endif %}
+
+  <div class="alert alert-info" role="alert" align="left">
+    <p><b>News</b></p>
+    <ul>
+      <li>[2021-11-16] This site has been updated and you can update your testing result or search for COVID-19 confirmed cases in your region now.</li>
+    </ul>
+    <p><b>Related Illustration</b></p>
+    <ul>
+  	  <li>This site provides services for collecting personal COVID-19 testing information and querying the number of confirmed cases of COVID-19 in the region.  </li>
+  	  <li>Information collection is anonymous, and the database is secured, so you don’t need to worry about your privacy being leaked </li>
+      <li>If you find any problems with the functions of this site, you can provide feedback via the link at the bottom of the page.</li>
+  	</ul>
+  </div>
+{% endblock %}
